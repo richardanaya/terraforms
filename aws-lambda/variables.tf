@@ -8,4 +8,5 @@ variable "zip_path" {
 
 variable "policy_statements" {
   type = "string"
+  default = ""
 }

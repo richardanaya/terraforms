@@ -19,13 +19,14 @@ EOF
 }
 
 resource "aws_iam_role_policy" "lambda_policy" {
+  count= "${var.policy_statements == ""?0:1}"
   name = "lambda_policy_policy_${var.name}"
   role = "${aws_iam_role.lambda_role.id}"
 
   policy = <<EOF
 {
   "Version": "2012-10-17",
-  "Statement": ${var.policy_statements}
+  "Statement": [${var.policy_statements}]
 }
 EOF
 }
